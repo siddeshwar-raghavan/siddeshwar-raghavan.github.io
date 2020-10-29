@@ -170,7 +170,7 @@ span.highlight {
 
 @keyframes animated-text{
   from{width: 0;}
-  to{width: 420px;}
+  to{width: 440px;}
 }
 
 /* cursor animations */
