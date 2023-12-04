@@ -179,3 +179,28 @@ span.highlight {
   from{border-bottom-color: rgba(255,0,0,.75);}
   to{border-bottom-color: transparent;}
 }
+
+.news-ticker {
+    width: 100%;
+    overflow: hidden;
+    background-color: #f1f1f1; /* Background color */
+    border: 1px solid #ddd; /* Border */
+}
+
+.news-content {
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    animation: scroll-news 20s linear infinite; /* Adjust time for different speeds */
+}
+
+.news-content span {
+    display: inline-block;
+    padding-right: 50px; /* Spacing between news items */
+}
+
+/* Keyframes for scrolling animation */
+@keyframes scroll-news {
+    0%   { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
