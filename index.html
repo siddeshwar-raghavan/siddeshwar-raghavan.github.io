@@ -5,41 +5,15 @@
   <title>Siddeshwar Raghavan</title>
   <meta name="author" content="Siddeshwar Raghavan">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <style>
-    /* Rounded profile and other general images */
-    img {
-      border-radius: 20%;
-    }
-
-    /* Publications thumbnails: uniform size, rectangular */
-    #publications img {
-      width: 200px;
-      height: auto;
-      border-radius: 0;
-    }
-
-    /* News section styling */
-    #news {
-      margin: 2em 0;
-    }
-    #news h2 {
-      margin-bottom: 0.5em;
-    }
-    #news ul {
-      list-style: disc inside;
-      padding-left: 0;
-    }
-    #news li {
-      margin-bottom: 0.5em;
-    }
-  </style>
-
   <link rel="stylesheet" type="text/css" href="stylesheet.css">
   <link rel="icon" type="image/png" href="images/Logo.png">
 </head>
 
 <body>
+   <!-- Theme Toggle Button with Icons -->
+  <span class="theme-icon-sun">☀</span>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"></button>
+
   <table style="width:100%; max-width:800px; margin:0 auto; border-collapse:separate; border-spacing:0;">
     <tr>
       <td>
@@ -89,7 +63,7 @@
 
         <!-- Static News Section -->
         <section id="news">
-          <h2>News</h2>
+          <h2>Latest News</h2>
           <ul>
             <li><strong>Selected as one of five Givens Associates at Argonne National Labs in April 2025.</strong></li>
             <li><strong>Passed my preliminary exam on August 6, 2024!</strong></li>
@@ -207,36 +181,6 @@
                 Selected as one of five Givens Research Associates at ANL. My work focuses on LLM reasoning models.
               </td>
             </tr>
-           <!--  <tr>
-              <td style="padding:20px; width:25%; vertical-align:middle;">
-                <img src="images/adori.png" alt="Adori Labs" width="160">
-              </td>
-              <td style="padding:20px; width:75%; vertical-align:middle;">
-                <papertitle>Engineering Intern, Adori Labs</papertitle><br>
-                <papertitle_sub>Sept 2018 – May 2019</papertitle_sub><br><br>
-                Built voice-assistant SDK layers, released Google Home Actions & Alexa Skills, and developed an internal podcast search tool using Elasticsearch.
-              </td>
-            </tr>
-            <tr>
-              <td style="padding:20px; width:25%; vertical-align:middle;">
-                <img src="images/iit_bombay.png" alt="IIT Bombay" width="160">
-              </td>
-              <td style="padding:20px; width:75%; vertical-align:middle;">
-                <papertitle>Research Intern, IIT Bombay</papertitle><br>
-                <papertitle_sub>June 2017 – July 2017</papertitle_sub><br><br>
-                Developed a weakly supervised VSLAM marker-detection system using a single camera, under Prof. Rajbabu Velmurugan.
-              </td>
-            </tr>
-            <tr>
-              <td style="padding:20px; width:25%; vertical-align:middle;">
-                <img src="images/iit_madras.png" alt="IIT Madras" width="160">
-              </td>
-              <td style="padding:20px; width:75%; vertical-align:middle;">
-                <papertitle>Research Intern, IIT Madras</papertitle><br>
-                <papertitle_sub>June 2016 – July 2016</papertitle_sub><br><br>
-                Built a battery State-of-Health tester under Prof. Ashok Jhunjhunwala, measuring efficiency, cycle count, and health dynamically.
-              </td>
-            </tr> -->
           </table>
         </section>
 
@@ -292,5 +236,25 @@
       </td>
     </tr>
   </table>
+
+  <script>
+    // Theme toggle functionality
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    }
+
+    // Load saved theme or default to light
+    function loadTheme() {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    }
+
+    // Initialize theme on page load
+    document.addEventListener('DOMContentLoaded', loadTheme);
+  </script>
 </body>
 </html>
