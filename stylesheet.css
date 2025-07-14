@@ -204,3 +204,12 @@ span.highlight {
     0%   { transform: translateX(100%); }
     100% { transform: translateX(-100%); }
 }
+
+#publications img {
+  max-width: 400px;    /* or whatever max you like */
+  width: 100%;         /* fill the cell up to that max */
+  height: auto;        /* preserve aspect ratio */
+  object-fit: contain; /* ensures no bits are cut off */
+  border-radius: 0;    /* keep them rectangular */
+  display: block;      /* remove any inline-img spacing */
+}
