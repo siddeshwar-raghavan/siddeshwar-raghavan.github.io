@@ -169,7 +169,7 @@
 }
 
 .social-icons a {
-  color: #2a2d32;           
+  color: #9bc5b8;           
   font-size: 48px;          /* icon size */
   text-decoration: none;
   transition: transform 0.15s ease, color 0.15s ease;
@@ -177,8 +177,44 @@
 
 .social-icons a:hover {
   transform: scale(1.15);
-  color: #2a2d32;           /* darker green on hover */
+  color: #9bc5b8;           /* darker green on hover */
 }
+
+/*Image cards*/
+.logo-card{
+  background: #ffffff;
+  padding: 12px;
+  border-radius: 10px;
+  display: inline-block;
+
+  /* Embossed raised effect */
+  box-shadow:
+    3px 3px 6px rgba(0,0,0,0.18),   /* shadow bottom-right */
+    -3px -3px 6px rgba(255,255,255,0.9); /* light top-left */
+}
+
+.logo-img{
+  padding: 12px;
+  border-radius: 12px;
+  background: #ffffff;
+  display: inline-block;
+  transition: box-shadow 0.2s ease, background 0.2s ease;
+}
+:root .logo-img{
+  box-shadow:
+    3px 3px 6px rgba(0,0,0,0.18),       /* shadow bottom-right */
+    -3px -3px 6px rgba(255,255,255,0.9); /* highlight top-left */
+}
+[data-theme="dark"] .logo-img {
+  background: #e8e8e8;  /* slightly gray so highlights show */
+  box-shadow:
+    4px 4px 8px rgba(0,0,0,0.55),        /* deeper shadow bottom-right */
+    -4px -4px 8px rgba(255, 245, 230, 0.35); /* off-white highlight top-left */
+}
+
+
+
+
 
 
 /* Base body styling */
