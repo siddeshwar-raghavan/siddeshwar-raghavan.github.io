@@ -1,3 +1,5 @@
+
+
 /* Font imports - keeping original */
 @font-face {
   font-family: 'Lato';
@@ -156,6 +158,28 @@
 [data-theme="dark"] .theme-icon-moon {
   opacity: 1;
 }
+
+/*ICONS*/
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 28px;                /* spacing between icons */
+  margin-top: 25px;
+}
+
+.social-icons a {
+  color: #2a2d32;           
+  font-size: 48px;          /* icon size */
+  text-decoration: none;
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.social-icons a:hover {
+  transform: scale(1.15);
+  color: #2a2d32;           /* darker green on hover */
+}
+
 
 /* Base body styling */
 body {
