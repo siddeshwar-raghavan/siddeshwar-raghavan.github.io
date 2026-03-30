@@ -1,0 +1,610 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Publications — Siddeshwar Raghavan</title>
+  <meta name="author" content="Siddeshwar Raghavan">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="images/Logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.3/css/academicons.min.css">
+  <style>
+    /* ── Root Variables ─────────────────────────────────────── */
+    :root {
+      --bg:          #fafaf8;
+      --surface:     #ffffff;
+      --text:        #1a1a1a;
+      --text-muted:  #5a5a5a;
+      --accent:      #8b1a1a;
+      --accent-soft: #f5eeee;
+      --border:      #e8e4e0;
+      --radius:      6px;
+      --max-w:       820px;
+      --shadow:      0 2px 12px rgba(0,0,0,.07);
+    }
+    [data-theme="dark"] {
+      --bg:          #131210;
+      --surface:     #1e1c1a;
+      --text:        #e8e4de;
+      --text-muted:  #9a9690;
+      --accent:      #d4746a;
+      --accent-soft: #2a1f1e;
+      --border:      #2e2b28;
+      --shadow:      0 2px 12px rgba(0,0,0,.35);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
+      transition: background .25s, color .25s;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { display: block; }
+
+    .page-wrap {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px 60px;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      height: 52px;
+      transition: background .25s;
+    }
+    .nav-name {
+      font-family: 'Lora', serif;
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .nav-links { display: flex; gap: 24px; align-items: center; }
+    .nav-links a {
+      font-size: .85rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color .15s;
+    }
+    .nav-links a:hover { color: var(--accent); text-decoration: none; }
+    .theme-btn {
+      background: none; border: 1.5px solid var(--border);
+      border-radius: 20px; cursor: pointer; padding: 4px 10px;
+      font-size: .8rem; color: var(--text-muted);
+      transition: border-color .15s, color .15s;
+    }
+    .theme-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── Page header ── */
+    .page-header {
+      padding: 48px 0 32px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 40px;
+    }
+    .page-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 1.9rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .page-header p {
+      font-size: .92rem;
+      color: var(--text-muted);
+    }
+
+    /* ── Legend ── */
+    .badge-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+    .badge-legend span {
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .05em;
+      padding: 3px 10px;
+      border-radius: 3px;
+      color: #fff;
+    }
+
+    /* ── Venue Badge ── */
+    .venue-badge {
+      display: inline-block;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 3px;
+      margin-bottom: 4px;
+      line-height: 1.6;
+      white-space: nowrap;
+    }
+    /* purple = main conference, green = workshop, grey = arxiv/preprint, blue = journal */
+    .badge-conference { background: #5b2d8e; color: #fff; }
+    .badge-workshop   { background: #2d7a3a; color: #fff; }
+    .badge-arxiv      { background: #5a5a5a; color: #fff; }
+    .badge-journal    { background: #1a4a7a; color: #fff; }
+
+    /* ── Year group ── */
+    .year-group { margin-bottom: 44px; }
+    .year-label {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── Publication card ── */
+    .pub-list { display: flex; flex-direction: column; gap: 20px; }
+    .pub-card {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 20px;
+      align-items: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      transition: box-shadow .2s, border-color .2s;
+    }
+    .pub-card:hover {
+      box-shadow: 0 4px 20px rgba(0,0,0,.12);
+      border-color: var(--accent);
+    }
+    .pub-thumb {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pub-thumb img {
+      width: 160px;
+      height: auto;
+      max-height: 160px;
+      object-fit: contain;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+    .pub-thumb .no-img {
+      width: 160px; height: 120px;
+      background: var(--accent-soft);
+      border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; color: var(--accent);
+    }
+    .pub-title {
+      font-family: 'Lora', serif;
+      font-size: .97rem;
+      font-weight: 600;
+      line-height: 1.45;
+      margin-bottom: 6px;
+    }
+    .pub-title a { color: var(--text); }
+    .pub-title a:hover { color: var(--accent); text-decoration: none; }
+    .pub-authors {
+      font-size: .87rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    .pub-authors strong { color: var(--text); }
+    .pub-links { display: flex; gap: 10px; flex-wrap: wrap; }
+    .pub-links a {
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      padding: 3px 10px;
+      border-radius: 3px;
+      border: 1.5px solid var(--border);
+      color: var(--text-muted);
+      transition: border-color .15s, color .15s;
+    }
+    .pub-links a:hover {
+      border-color: var(--accent); color: var(--accent); text-decoration: none;
+    }
+
+    .pub-card--placeholder {
+      border-style: dashed;
+      opacity: .7;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 24px 0 0;
+      border-top: 1px solid var(--border);
+      font-size: .85rem;
+      color: var(--text-muted);
+    }
+    footer a { color: var(--text-muted); }
+    footer a:hover { color: var(--accent); }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .pub-card { grid-template-columns: 1fr; }
+      .pub-thumb img { width: 100%; max-height: 200px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Navigation ── -->
+<nav>
+  <a href="index_v3.html" class="nav-name">Siddeshwar Raghavan</a>
+  <div class="nav-links">
+    <a href="index_v3.html">Home</a>
+    <a href="index_v3.html#news">News</a>
+    <a href="index_v3.html#experience">Experience</a>
+    <a href="index_v3.html#education">Education</a>
+    <button id="theme-btn" class="theme-btn" onclick="toggleTheme()" aria-label="Toggle dark mode">☾</button>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+  <!-- ── Page Header ── -->
+  <div class="page-header">
+    <h1>Publications</h1>
+    <p>*, + indicates equal contribution</p>
+  </div>
+
+  <!-- ── Badge Legend ── -->
+  <div class="badge-legend">
+    <span class="badge-conference">Main Conference</span>
+    <span class="badge-workshop">Workshop</span>
+    <span class="badge-journal">Journal</span>
+    <span class="badge-arxiv">Preprint / ArXiv</span>
+  </div>
+
+  <!-- ── 2026 ── -->
+  <div class="year-group">
+    <div class="year-label">2026</div>
+    <div class="pub-list">
+
+      <!-- CL-AVS benchmark -->
+      <div class="pub-card">
+        <div class="pub-thumb">
+          <img src="images/publications/clavs.png" alt="CL-AVS thumbnail" onerror="this.parentElement.innerHTML='<div class=\'no-img\'>📄</div>'">
+        </div>
+        <div>
+          <span class="venue-badge badge-arxiv">ArXiV 2026</span>
+          <div class="pub-title">
+            <a href="https://arxiv.org/pdf/2603.08967" target="_blank">
+              Can You Hear, Localize, and Segment Continually? An Exemplar-Free Continual Learning Benchmark for Audio-Visual Segmentation
+            </a>
+          </div>
+          <div class="pub-authors"><strong>Siddeshwar Raghavan</strong>, Gautham Vinod, Bruce Coburn, Fengqing Zhu</div>
+          <div class="pub-links">
+            <!-- <a href="https://gitlab.com/viper-purdue/panda" target="_blank">Website</a> -->
+            <a href="https://arxiv.org/pdf/2603.08967" target="_blank">PDF</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANDA -->
+      <div class="pub-card">
+        <div class="pub-thumb">
+          <img src="images/publications/panda.png" alt="PANDA thumbnail" onerror="this.parentElement.innerHTML='<div class=no-img>📄</div>'">
+        </div>
+        <div>
+          <span class="venue-badge badge-conference">AAAI 2026</span>
+          <div class="pub-title">
+            <a href="https://arxiv.org/pdf/2511.09791" target="_blank">
+              PANDA — Patch And Distribution-Aware Augmentation for Long-Tailed Exemplar-Free Continual Learning
+            </a>
+          </div>
+          <div class="pub-authors"><strong>Siddeshwar Raghavan</strong>, Jiangpeng He, Fengqing Zhu</div>
+          <div class="pub-links">
+            <a href="https://gitlab.com/viper-purdue/panda" target="_blank">Website</a>
+            <a href="https://arxiv.org/pdf/2511.09791" target="_blank">PDF</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CVPR Workshop egocal -->
+      <div class="pub-card">
+        <div class="pub-thumb">
+          <img src="images/publications/egocal.png" alt="EgoCal thumbnail" onerror="this.parentElement.innerHTML='<div class=no-img>📄</div>'">
+        </div>
+        <div>
+          <span class="venue-badge badge-workshop">CVPR Workshop 2026 · MTF</span>
+          <div class="pub-title">EgoCal: Combining Egocentric Data with Vision-Language Fusion for Real-time Dietary Tracking</div>
+          <div class="pub-authors">Gautham Vinod*, <strong>Siddeshwar Raghavan</strong>*, Bruce Coburn*, Wei-Lun Chu, Jinge Ma, Fengqing Zhu</div>
+        </div>
+      </div>
+
+      <!-- CVPR Workshop Diet Delta -->
+      <div class="pub-card">
+        <div class="pub-thumb">
+          <img src="images/publications/dietdelta.png" alt="Diet Delta thumbnail" onerror="this.parentElement.innerHTML='<div class=no-img>📄</div>'">
+        </div>
+        <div>
+          <span class="venue-badge badge-workshop">CVPR Workshop 2026 · MTF</span>
+          <div class="pub-title">DietDelta: A Vision-Language Approach for Dietary Assessment via Before-and-After Images</div>
+          <div class="pub-authors">Gautham Vinod, <strong>Siddeshwar Raghavan</strong>, Bruce Coburn, Fengqing Zhu</div>
+        </div>
+      </div>
+
+      <!-- CVPR Workshop stereotypical -->
+      <div class="pub-card">
+        <div class="pub-thumb">
+          <img src="images/publications/stereotypical.png" alt="Stereo-Typical thumbnail" onerror="this.parentElement.innerHTML='<div class=no-img>📄</div>'">
+        </div>
+        <div>
+          <span class="venue-badge badge-workshop">CVPR Workshop 2026 · MTF</span>
+          <div class="pub-title">Not Your Stereo-Typical Estimator: Combining Vision and Language for Volume Perception</div>
+          <div class="pub-authors">Gautham Vinod, Bruce Coburn, <strong>Siddeshwar Raghavan</strong>, Fengqing Zhu</div>
+        </div>
+      </div>
+
+
+  <!-- Implicit-Scale 3D -->
+      <div class="pub-card">
+        <div class="pub-thumb">
+          <img src="images/publications/implicit.png" alt="Implicit-3D thumbnail" onerror="this.parentElement.innerHTML='<div class=no-img>📄</div>'">
+        </div>
+        <div>
+          <span class="venue-badge badge-arxiv">ArXiv 2026</span>
+          <div class="pub-title">
+            <a href="https://arxiv.org/abs/2602.13041" target="_blank">
+              Implicit-Scale 3D Reconstruction for Multi-Food Volume Estimation from Monocular Images
+            </a>
+          </div>
+          <div class="pub-authors">
+            Y Chen, Gautham Vinod*, <strong>Siddeshwar Raghavan</strong>*, TI Mahmud, B Coburn, J Ma, Fengqing Zhu, J He
+          </div>
+          <div class="pub-links">
+            <a href="https://arxiv.org/abs/2602.13041" target="_blank">PDF</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Size Matters -->
+      <div class="pub-card">
+        <div class="pub-thumb"><img src="images/publications/size_matters.png" alt="size matters thumbnail" onerror="this.parentElement.innerHTML='<div class=no-img>📄</div>'">
+      </div>
+        <div>
+          <span class="venue-badge badge-conference">IEEE CAI 2026</span>
+          <div class="pub-title">
+            <a href="https://arxiv.org/abs/2601.20051" target="_blank">
+              Size Matters: Reconstructing Real-Scale 3D Models from Monocular Images for Food Portion Estimation
+            </a>
+          </div>
+          <div class="pub-authors">
+            Gautham Vinod, B Coburn, <strong>Siddeshwar Raghavan</strong>, J He, Fengqing Zhu
+          </div>
+          <div class="pub-links">
+            <a href="https://arxiv.org/abs/2601.20051" target="_blank">PDF</a>
+          </div>
+        </div>
+      </div>
+
+     </div>
+  </div>
+
+  <!-- ── 2025 ── -->
+  <div class="year-group">
+    <div class="year-label">2025</div>
+    <div class="pub-list">
+
+      <!-- MOSAIC NeurIPS Workshop -->
+      <div class="pub-card">
+        <div class="pub-thumb">
+          <img src="images/publications/mosaic.png" alt="MOSAIC thumbnail" onerror="this.parentElement.innerHTML='<div class=no-img>📄</div>'">
+        </div>
+        <div>
+          <span class="venue-badge badge-workshop">NeurIPS Workshop 2025 · DL4C</span>
+          <div class="pub-title">
+            <a href="https://arxiv.org/pdf/2510.08804" target="_blank">
+              MOSAIC: Multi-agent Orchestration for Task-Intelligent Scientific Coding
+            </a>
+          </div>
+          <div class="pub-authors"><strong>Siddeshwar Raghavan</strong>, Tanwi Mallick</div>
+          <div class="pub-links">
+            <a href="https://arxiv.org/pdf/2510.08804" target="_blank">PDF</a>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+  <!-- ── 2024 ── -->
+  <div class="year-group">
+    <div class="year-label">2024</div>
+    <div class="pub-list">
+
+      <!-- Mfp3d ICPR -->
+      <div class="pub-card">
+        <div class="pub-thumb"><img src="images/publications/mfp3d.png" alt="MOSAIC thumbnail" onerror="this.parentElement.innerHTML='<div class=no-img>📄</div>'"></div>
+        <div>
+          <span class="venue-badge badge-conference">ICPR 2024</span>
+          <div class="pub-title">
+            <a href="https://arxiv.org/pdf/2411.10492?" target="_blank">
+            
+            Mfp3d: Monocular Food Portion Estimation Leveraging 3D Point Clouds
+          </div>
+          <div class="pub-authors">
+            J Ma, X Zhang, Gautham Vinod, <strong>Siddeshwar Raghavan</strong>, J He, Fengqing Zhu
+          </div>
+        </div>
+      </div>
+
+      <!-- MetaFood3D -->
+      <div class="pub-card">
+        <div class="pub-thumb">
+          <img src="images/publications/metafood3d.png" alt="MetaFood3D thumbnail" onerror="this.parentElement.innerHTML='<div class=no-img>📄</div>'">
+        </div>
+        <div>
+          <span class="venue-badge badge-arxiv">ArXiv 2024</span>
+          <div class="pub-title">
+            <a href="https://arxiv.org/pdf/2409.01966" target="_blank">
+              MetaFood3D: Large 3D Food Object Dataset with Nutrition Values
+            </a>
+          </div>
+          <div class="pub-authors">
+            Y Chen+, J He+, Gautham Vinod*, <strong>Siddeshwar Raghavan</strong>*, C Czarnecki, T Ibn Mahmud, J Ma, Fengqing Zhu
+          </div>
+          <div class="pub-links">
+            <a href="https://lorenz.ecn.purdue.edu/~food3d/" target="_blank">Website</a>
+            <a href="https://arxiv.org/pdf/2409.01966" target="_blank">PDF</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- DELTA CVPR Workshop -->
+      <div class="pub-card">
+        <div class="pub-thumb">
+          <img src="images/publications/delta.png" alt="DELTA thumbnail" onerror="this.parentElement.innerHTML='<div class=no-img>📄</div>'">
+        </div>
+        <div>
+          <span class="venue-badge badge-workshop">CVPR Workshop 2024 · CLVision</span>
+          <div class="pub-title">
+            <a href="https://arxiv.org/pdf/2404.04476.pdf" target="_blank">
+              DELTA: Decoupling Long-Tailed Online Continual Learning
+            </a>
+          </div>
+          <div class="pub-authors"><strong>Siddeshwar Raghavan</strong>, Jiangpeng He, Fengqing Zhu</div>
+          <div class="pub-links">
+            <a href="https://gitlab.com/viper-purdue/delta" target="_blank">Code</a>
+            <a href="https://openaccess.thecvf.com/content/CVPR2024W/CLVISION/papers/Raghavan_DELTA_Decoupling_Long-Tailed_Online_Continual_Learning_CVPRW_2024_paper.pdf" target="_blank">PDF</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- OCIL WACV -->
+      <div class="pub-card">
+        <div class="pub-thumb">
+          <img src="images/publications/ocil_food_cl.png" alt="OCIL thumbnail" onerror="this.parentElement.innerHTML='<div class=no-img>📄</div>'">
+        </div>
+        <div>
+          <span class="venue-badge badge-conference">WACV 2024</span>
+          <div class="pub-title">
+            <a href="https://arxiv.org/pdf/2301.05246.pdf" target="_blank">
+              Online Class-Incremental Learning For Real-World Food Image Classification
+            </a>
+          </div>
+          <div class="pub-authors"><strong>Siddeshwar Raghavan</strong>, Jiangpeng He, Fengqing Zhu</div>
+          <div class="pub-links">
+            <a href="https://gitlab.com/viper-purdue/OCIL-real-world-food-image-classification" target="_blank">Code</a>
+            <a href="https://openaccess.thecvf.com/content/WACV2024/papers/Raghavan_Online_Class-Incremental_Learning_for_Real-World_Food_Image_Classification_WACV_2024_paper.pdf" target="_blank">PDF</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── 2022 ── -->
+  <div class="year-group">
+    <div class="year-label">2022</div>
+    <div class="pub-list">
+
+      <!-- Physics to the Rescue — TPAMI journal -->
+      <div class="pub-card">
+        <div class="pub-thumb">
+          <img src="images/publications/iccp_2022_nlos.png" alt="NLOS TPAMI thumbnail" onerror="this.parentElement.innerHTML='<div class=no-img>📄</div>'">
+        </div>
+        <div>
+          <span class="venue-badge badge-journal">IEEE TPAMI</span>
+          <div class="pub-title">
+            <a href="https://arxiv.org/pdf/2205.01679.pdf" target="_blank">
+              Physics to the Rescue: Deep Non-line-of-sight Reconstruction for High-speed Imaging
+            </a>
+          </div>
+          <div class="pub-authors">
+            Fangzhou Mu, Sicheng Mo, Jiayong Peng, Xiaochun Liu, Ji Hyun Nam,
+            <strong>Siddeshwar Raghavan</strong>, Andreas Velten, Yin Li
+          </div>
+          <div class="pub-links">
+            <a href="https://github.com/fmu2/nlos3d" target="_blank">Code</a>
+            <a href="https://arxiv.org/pdf/2205.01679.pdf" target="_blank">PDF</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── 2021 ── -->
+  <div class="year-group">
+    <div class="year-label">2021</div>
+    <div class="pub-list">
+
+      <!-- Towards NLOS Photography -->
+      <div class="pub-card">
+        <div class="pub-thumb">
+          <img src="images/publications/nlos.png" alt="NLOS ArXiv thumbnail" onerror="this.parentElement.innerHTML='<div class=no-img>📄</div>'">
+        </div>
+        <div>
+          <span class="venue-badge badge-arxiv">ArXiv 2021</span>
+          <div class="pub-title">
+            <a href="https://arxiv.org/abs/2109.07783" target="_blank">
+              Towards Non-Line-of-Sight Photography
+            </a>
+          </div>
+          <div class="pub-authors">
+            Jiayong Peng, Fangzhou Mu, Ji Hyun Nam, <strong>Siddeshwar Raghavan</strong>,
+            Yin Li, Andreas Velten, Zhiwei Xiong
+          </div>
+          <div class="pub-links">
+            <a href="https://arxiv.org/abs/2109.07783" target="_blank">PDF</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <p>
+      Check out my <a href="https://www.instagram.com/atelierofsid/" target="_blank">artworks</a>! &nbsp;·&nbsp;
+      Template inspired by <a href="https://github.com/jonbarron/jonbarron_website" target="_blank">Jon Barron</a>.
+    </p>
+  </footer>
+
+</div><!-- /page-wrap -->
+
+<script>
+  function toggleTheme() {
+    const cur = document.documentElement.getAttribute('data-theme');
+    const next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    document.getElementById('theme-btn').textContent = next === 'dark' ? '☀' : '☾';
+  }
+  (function () {
+    const saved = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', saved);
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('theme-btn').textContent = saved === 'dark' ? '☀' : '☾';
+    });
+  })();
+</script>
+</body>
+</html>

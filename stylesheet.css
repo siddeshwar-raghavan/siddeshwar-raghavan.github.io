@@ -170,7 +170,7 @@
 
 .social-icons a {
   color: #9bc5b8;           
-  font-size: 48px;          /* icon size */
+  font-size: 72px;          /* icon size */
   text-decoration: none;
   transition: transform 0.15s ease, color 0.15s ease;
 }

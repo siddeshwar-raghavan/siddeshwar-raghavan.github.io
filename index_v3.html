@@ -1,0 +1,678 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Siddeshwar Raghavan</title>
+  <meta name="author" content="Siddeshwar Raghavan">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <link rel="icon" type="image/png" href="images/Logo.png"> -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.3/css/academicons.min.css">
+  <style>
+    /* ── Root Variables ─────────────────────────────────────── */
+    :root {
+      --bg:          #fafaf8;
+      --surface:     #ffffff;
+      --text:        #1a1a1a;
+      --text-muted:  #5a5a5a;
+      --accent:      #8b1a1a;      /* deep crimson — Purdue nod */
+      --accent-soft: #f5eeee;
+      --border:      #e8e4e0;
+      --radius:      6px;
+      --max-w:       820px;
+      --shadow:      0 2px 12px rgba(0,0,0,.07);
+    }
+    [data-theme="dark"] {
+      --bg:          #131210;
+      --surface:     #1e1c1a;
+      --text:        #e8e4de;
+      --text-muted:  #9a9690;
+      --accent:      #d4746a;
+      --accent-soft: #2a1f1e;
+      --border:      #2e2b28;
+      --shadow:      0 2px 12px rgba(0,0,0,.35);
+    }
+
+    /* ── Reset & Base ───────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
+      transition: background .25s, color .25s;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { display: block; }
+
+    /* ── Layout ─────────────────────────────────────────────── */
+    .page-wrap {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px 60px;
+    }
+
+    /* ── Nav ─────────────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      height: 52px;
+      transition: background .25s;
+    }
+    .nav-name {
+      font-family: 'Lora', serif;
+      font-size: .95rem;
+      font-weight: 600;
+      letter-spacing: .01em;
+      color: var(--text);
+    }
+    .nav-links { display: flex; gap: 24px; align-items: center; }
+    .nav-links a {
+      font-size: .85rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color .15s;
+    }
+    .nav-links a:hover { color: var(--accent); text-decoration: none; }
+
+    /* Theme toggle */
+    .theme-btn {
+      background: none; border: 1.5px solid var(--border);
+      border-radius: 20px; cursor: pointer; padding: 4px 10px;
+      font-size: .8rem; color: var(--text-muted);
+      transition: border-color .15s, color .15s;
+    }
+    .theme-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── Hero / Profile ─────────────────────────────────────── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 200px;
+      gap: 40px;
+      align-items: start;
+      padding: 52px 0 40px;
+    }
+    /* ── Typewriter ── */
+    #parent {
+      height: 56px;
+      white-space: nowrap;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 20px;
+      padding-bottom: 8px;
+      width: fit-content;
+      font-family: 'Lora', serif;
+      font-size: 2.1rem;
+      font-weight: 600;
+      color: var(--text);
+      animation: typed-text 1.8s steps(22, end) 0.3s 1 normal both;
+    }
+    #border {
+      border-bottom: 3px solid var(--accent);
+      position: absolute;
+      right: -6px;
+      bottom: 6px;
+      width: 18px;
+      animation: blink-cursor 600ms steps(1) infinite;
+    }
+    @keyframes typed-text {
+      from { width: 0; }
+      to   { width: 100%; }
+    }
+    @keyframes blink-cursor {
+      0%, 100% { border-bottom-color: var(--accent); }
+      50%       { border-bottom-color: transparent; }
+    }
+    .hero-text p { color: var(--text); margin-bottom: 12px; }
+    .hero-photo img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid var(--border);
+      box-shadow: var(--shadow);
+      margin-top: 8px;
+    }
+
+    /* Social icons */
+    .social-icons { display: flex; gap: 14px; margin-top: 20px; flex-wrap: wrap; justify-content: center; }
+    .social-icons a {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 1.5px solid var(--border);
+      color: var(--text-muted); font-size: 1rem;
+      transition: border-color .15s, color .15s, background .15s;
+    }
+    .social-icons a:hover {
+      border-color: var(--accent); color: var(--accent);
+      background: var(--accent-soft); text-decoration: none;
+    }
+
+    /* ── Section headers ────────────────────────────────────── */
+    section { margin-bottom: 52px; }
+    .section-title {
+      font-family: 'Lora', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── News ───────────────────────────────────────────────── */
+    .news-list { list-style: none; }
+    .news-list li {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 16px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: .94rem;
+    }
+    .news-list li:last-child { border-bottom: none; }
+    .news-date { color: var(--text-muted); font-size: .85rem; padding-top: 2px; white-space: nowrap; }
+
+    /* ── Venue Badge ────────────────────────────────────────── */
+    .venue-badge {
+      display: inline-block;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 3px;
+      margin-bottom: 4px;
+      line-height: 1.6;
+      white-space: nowrap;
+    }
+    /* purple = main conference, green = workshop, grey = arxiv/preprint, blue = journal */
+    .badge-conference { background: #5b2d8e; color: #fff; }
+    .badge-workshop   { background: #2d7a3a; color: #fff; }
+    .badge-arxiv      { background: #5a5a5a; color: #fff; }
+    .badge-journal    { background: #1a4a7a; color: #fff; }
+
+    /* Full list button */
+    .full-list-btn {
+      display: inline-block;
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      padding: 5px 14px;
+      border-radius: 20px;
+      border: 1.5px solid var(--accent);
+      color: var(--accent);
+      transition: background .15s, color .15s;
+      white-space: nowrap;
+    }
+    .full-list-btn:hover {
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    /* ── Publication card ───────────────────────────────────── */
+    .pub-list { display: flex; flex-direction: column; gap: 28px; }
+    .pub-card {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 20px;
+      align-items: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      transition: box-shadow .2s, border-color .2s;
+    }
+    .pub-card:hover {
+      box-shadow: 0 4px 20px rgba(0,0,0,.12);
+      border-color: var(--accent);
+    }
+    .pub-thumb {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pub-thumb img {
+      width: 160px;
+      height: auto;
+      max-height: 160px;
+      object-fit: contain;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+    .pub-thumb .no-img {
+      width: 160px; height: 120px;
+      background: var(--accent-soft);
+      border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; color: var(--accent);
+    }
+    .pub-title {
+      font-family: 'Lora', serif;
+      font-size: .97rem;
+      font-weight: 600;
+      line-height: 1.45;
+      margin-bottom: 6px;
+    }
+    .pub-title a { color: var(--text); }
+    .pub-title a:hover { color: var(--accent); text-decoration: none; }
+    .pub-authors {
+      font-size: .87rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    .pub-authors strong { color: var(--text); }
+    .pub-links { display: flex; gap: 10px; flex-wrap: wrap; }
+    .pub-links a {
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      padding: 3px 10px;
+      border-radius: 3px;
+      border: 1.5px solid var(--border);
+      color: var(--text-muted);
+      transition: border-color .15s, color .15s;
+    }
+    .pub-links a:hover {
+      border-color: var(--accent); color: var(--accent); text-decoration: none;
+    }
+
+    /* ── Experience / Education ──────────────────────────────── */
+    .exp-list { display: flex; flex-direction: column; gap: 24px; }
+    .exp-card {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+    .exp-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 12px;
+      width: 90px;
+      height: 70px;
+      flex-shrink: 0;
+    }
+    .exp-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .exp-info h3 {
+      font-family: 'Lora', serif;
+      font-size: .97rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .exp-info .exp-sub {
+      font-size: .85rem; color: var(--text-muted); margin-bottom: 6px;
+    }
+    .exp-info ul { padding-left: 18px; font-size: .9rem; }
+    .exp-info ul li { margin-bottom: 4px; }
+    .exp-divider { border: none; border-top: 1px solid var(--border); margin: 4px 0; }
+
+    /* ── Footer ─────────────────────────────────────────────── */
+    footer {
+      text-align: center;
+      padding: 24px 0 0;
+      border-top: 1px solid var(--border);
+      font-size: .85rem;
+      color: var(--text-muted);
+    }
+    footer a { color: var(--text-muted); }
+    footer a:hover { color: var(--accent); }
+
+    /* ── Responsive ─────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-photo { order: -1; }
+      .hero-photo img { width: 120px; height: 120px; }
+      .pub-card { grid-template-columns: 1fr; }
+      .pub-thumb img { width: 100%; max-height: 200px; }
+      .exp-card { grid-template-columns: 70px 1fr; gap: 14px; }
+      .news-list li { grid-template-columns: 1fr; gap: 4px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Navigation ── -->
+<nav>
+  <span class="nav-name">Siddeshwar Raghavan</span>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#news">News</a>
+    <a href="#publications">Publications</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <button id="theme-btn" class="theme-btn" onclick="toggleTheme()" aria-label="Toggle dark mode">☾</button>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+  <!-- ── Hero ── -->
+  <div class="hero" id="about">
+    <div class="hero-text">
+      <div id="parent">Hi, I am Sid <div id="border"></div></div>
+      <p>
+        A fifth-year
+        <a href="https://engineering.purdue.edu/ECE/Academics/Graduates/phd" target="_blank">ECE Ph.D.</a>
+        candidate in Computer Vision at Purdue University. My advisors are
+        <a href="https://engineering.purdue.edu/~ace/" target="_blank">Prof. Edward J. Delp</a> and
+        <a href="https://engineering.purdue.edu/~zhu0/" target="_blank">Prof. Fengqing Maggie Zhu</a>.
+      </p>
+      <p>
+        I earned my master's degree from the
+        <a href="https://www.engr.wisc.edu/department/electrical-computer-engineering/" target="_blank">ECE Department</a>
+        at University of Wisconsin–Madison, where I worked with
+        <a href="https://www.biostat.wisc.edu/~yli/" target="_blank">Prof. Yin Li</a>
+        and collaborated with
+        <a href="https://biostat.wisc.edu/~velten/" target="_blank">Prof. Andreas Velten</a>.
+      </p>
+      <p>
+        My research spans <strong>Continual Learning</strong> for Computer Vision,
+        <strong>Multi-Modal Alignment</strong>, <strong>3D Vision</strong>, and <strong>Reasoning Models</strong>.
+      </p>
+      <div class="social-icons">
+        <a href="data/Siddeshwar_Raghavan.pdf" target="_blank" aria-label="CV"><i class="fas fa-file-alt"></i></a>
+        <a href="/cdn-cgi/l/email-protection#5a283b3d323b2c6b681a2a2f283e2f3f743f3e2f" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://scholar.google.com/citations?user=Ge1zN8oAAAAJ&hl=en" target="_blank" aria-label="Google Scholar"><i class="ai ai-google-scholar"></i></a>
+        <a href="https://www.linkedin.com/in/siddeshwar-raghavan/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="images/sid_2.JPG" alt="Siddeshwar Raghavan">
+    </div>
+  </div>
+
+  <!-- ── News ── -->
+  <section id="news">
+    <h2 class="section-title">News</h2>
+    <ul class="news-list">
+      <li>
+        <span class="news-date">Jan 2026</span>
+        <span>Started as an instructor for VIP (Vertically Integrated Projects) at Purdue University.</span>
+      </li>
+      <li>
+        <span class="news-date">Dec 2025</span>
+        <span><strong>PANDA</strong> accepted at <strong>AAAI 2026</strong> Main Technical Track (17.6% acceptance).
+          <a href="https://arxiv.org/pdf/2511.09791" target="_blank">[Paper]</a></span>
+      </li>
+      <li>
+        <span class="news-date">Oct 2025</span>
+        <span><strong>MOSAIC</strong> accepted at <strong>NeurIPS 2025</strong>.
+          <a href="https://arxiv.org/pdf/2510.08804" target="_blank">[Paper]</a></span>
+      </li>
+      <li>
+        <span class="news-date">Apr 2025</span>
+        <span>Selected as one of thirteen <strong>Givens Associates</strong> at Argonne National Labs.</span>
+      </li>
+      <!-- <li>
+        <span class="news-date">Aug 2024</span>
+        <span>Passed my preliminary exam.</span>
+      </li>
+      <li>
+        <span class="news-date">Jun 2024</span>
+        <span>Paper accepted at <strong>CVPR 2024</strong> Workshop CLVision.
+          <a href="https://openaccess.thecvf.com/content/CVPR2024W/CLVISION/papers/Raghavan_DELTA_Decoupling_Long-Tailed_Online_Continual_Learning_CVPRW_2024_paper.pdf" target="_blank">[Paper]</a></span>
+      </li>
+      <li>
+        <span class="news-date">Jan 2024</span>
+        <span>Paper accepted at <strong>WACV 2024</strong>.
+          <a href="https://openaccess.thecvf.com/content/WACV2024/papers/Raghavan_Online_Class-Incremental_Learning_for_Real-World_Food_Image_Classification_WACV_2024_paper.pdf" target="_blank">[Paper]</a></span>
+      </li> -->
+    </ul>
+  </section>
+
+  <!-- ── Publications ── -->
+  <section id="publications">
+    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-bottom:20px; padding-bottom:10px; border-bottom:1px solid var(--border);">
+      <h2 class="section-title" style="margin:0; padding:0; border:none;">Selected Publications</h2>
+      <a href="publications.html" class="full-list-btn">Full List →</a>
+    </div>
+    <p style="font-size:.85rem; color:var(--text-muted); margin-bottom:20px;"></p>
+
+    <div class="pub-list">
+
+      <!-- CL-AVS benchmark -->
+      <div class="pub-card">
+        <div class="pub-thumb">
+          <img src="images/publications/clavs.png" alt="CL-AVS thumbnail" onerror="this.parentElement.innerHTML='<div class=\'no-img\'>📄</div>'">
+        </div>
+        <div>
+          <span class="venue-badge badge-arxiv">ArXiV 2026</span>
+          <div class="pub-title">
+            <a href="https://arxiv.org/pdf/2603.08967" target="_blank">
+              Can You Hear, Localize, and Segment Continually? An Exemplar-Free Continual Learning Benchmark for Audio-Visual Segmentation
+            </a>
+          </div>
+          <div class="pub-authors"><strong>Siddeshwar Raghavan</strong>, Gautham Vinod, Bruce Coburn, Fengqing Zhu</div>
+          <div class="pub-links">
+            <!-- <a href="https://gitlab.com/viper-purdue/panda" target="_blank">Website</a> -->
+            <a href="https://arxiv.org/pdf/2603.08967" target="_blank">PDF</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANDA -->
+      <div class="pub-card">
+        <div class="pub-thumb">
+          <img src="images/publications/panda.png" alt="PANDA thumbnail" onerror="this.parentElement.innerHTML='<div class=\'no-img\'>📄</div>'">
+        </div>
+        <div>
+          <span class="venue-badge badge-conference">AAAI 2026</span>
+          <div class="pub-title">
+            <a href="https://arxiv.org/pdf/2511.09791" target="_blank">
+              PANDA — Patch And Distribution-Aware Augmentation for Long-Tailed Exemplar-Free Continual Learning
+            </a>
+          </div>
+          <div class="pub-authors"><strong>Siddeshwar Raghavan</strong>, Jiangpeng He, Fengqing Zhu</div>
+          <div class="pub-links">
+            <a href="https://gitlab.com/viper-purdue/panda" target="_blank">Website</a>
+            <a href="https://arxiv.org/pdf/2511.09791" target="_blank">PDF</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- MOSAIC -->
+      <div class="pub-card">
+        <div class="pub-thumb">
+          <img src="images/publications/mosaic.png" alt="MOSAIC thumbnail" onerror="this.parentElement.innerHTML='<div class=\'no-img\'>📄</div>'">
+        </div>
+        <div>
+          <span class="venue-badge badge-workshop">NeurIPS Workshop 2025 · DL4C</span>
+          <div class="pub-title">
+            <a href="https://arxiv.org/pdf/2510.08804" target="_blank">
+              MOSAIC: A Multi-Agent Framework for Scientific Coding and Reasoning
+            </a>
+          </div>
+          <div class="pub-authors"><strong>Siddeshwar Raghavan</strong>, Tanwi Mallick</div>
+          <div class="pub-links">
+            <a href="https://arxiv.org/pdf/2510.08804" target="_blank">PDF</a>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- DELTA -->
+      <div class="pub-card">
+        <div class="pub-thumb">
+          <img src="images/publications/delta.png" alt="DELTA thumbnail" onerror="this.parentElement.innerHTML='<div class=\'no-img\'>📄</div>'">
+        </div>
+        <div>
+          <span class="venue-badge badge-workshop">CVPR Workshop 2024 · CLVision</span>
+          <div class="pub-title">
+            <a href="https://arxiv.org/pdf/2404.04476.pdf" target="_blank">
+              DELTA: Decoupling Long-Tailed Online Continual Learning
+            </a>
+          </div>
+          <div class="pub-authors"><strong>Siddeshwar Raghavan</strong>, Jiangpeng He, Fengqing Zhu</div>
+          <div class="pub-links">
+            <a href="https://gitlab.com/viper-purdue/delta" target="_blank">Code</a>
+            <a href="https://openaccess.thecvf.com/content/CVPR2024W/CLVISION/papers/Raghavan_DELTA_Decoupling_Long-Tailed_Online_Continual_Learning_CVPRW_2024_paper.pdf" target="_blank">PDF</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- OCIL Food WACV -->
+      <div class="pub-card">
+        <div class="pub-thumb">
+          <img src="images/publications/ocil_food_cl.png" alt="OCIL thumbnail" onerror="this.parentElement.innerHTML='<div class=\'no-img\'>📄</div>'">
+        </div>
+        <div>
+          <span class="venue-badge badge-conference">WACV 2024</span>
+          <div class="pub-title">
+            <a href="https://arxiv.org/pdf/2301.05246.pdf" target="_blank">
+              Online Class-Incremental Learning For Real-World Food Classification
+            </a>
+          </div>
+          <div class="pub-authors"><strong>Siddeshwar Raghavan</strong>, Jiangpeng He, Fengqing Zhu</div>
+          <div class="pub-links">
+            <a href="https://gitlab.com/viper-purdue/OCIL-real-world-food-image-classification" target="_blank">Code</a>
+            <a href="https://openaccess.thecvf.com/content/WACV2024/papers/Raghavan_Online_Class-Incremental_Learning_for_Real-World_Food_Image_Classification_WACV_2024_paper.pdf" target="_blank">PDF</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- NLOS IEEE TPAMI 22 -->
+      <div class="pub-card">
+        <div class="pub-thumb">
+          <img src="images/publications/iccp_2022_nlos.png" alt="NLOS ICCP thumbnail" onerror="this.parentElement.innerHTML='<div class=\'no-img\'>📄</div>'">
+        </div>
+        <div>
+          <span class="venue-badge badge-journal">IEEE TPAMI 2022</span>
+          <div class="pub-title">
+            <a href="https://arxiv.org/pdf/2205.01679.pdf" target="_blank">
+              Physics to the Rescue: Deep Non-line-of-sight Reconstruction for High-speed Imaging
+            </a>
+          </div>
+          <div class="pub-authors">
+            Fangzhou Mu, Sicheng Mo, Jiayong Peng, Xiaochun Liu, Ji Hyun Nam,
+            <strong>Siddeshwar Raghavan</strong>, Andreas Velten, Yin Li
+          </div>
+          <div class="pub-links">
+            <a href="https://github.com/fmu2/nlos3d" target="_blank">Code</a>
+            <a href="https://arxiv.org/pdf/2205.01679.pdf" target="_blank">PDF</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- NLOS ArXiv -->
+      <div class="pub-card">
+        <div class="pub-thumb">
+          <img src="images/publications/nlos.png" alt="NLOS ArXiv thumbnail" onerror="this.parentElement.innerHTML='<div class=\'no-img\'>📄</div>'">
+        </div>
+        <div>
+          <span class="venue-badge badge-arxiv">ArXiv 2021</span>
+          <div class="pub-title">
+            <a href="https://d1wqtxts1xzle7.cloudfront.net/89365578/2109.07783v1-libre.pdf" target="_blank">
+              Towards Non-Line-of-Sight Photography
+            </a>
+          </div>
+          <div class="pub-authors">
+            Jiayong Peng, Fangzhou Mu, Ji Hyun Nam, <strong>Siddeshwar Raghavan</strong>,
+            Yin Li, Andreas Velten, Zhiwei Xiong
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /pub-list -->
+  </section>
+
+  <!-- ── Experience ── -->
+  <section id="experience">
+    <h2 class="section-title">Experience</h2>
+    <div class="exp-list">
+      <div class="exp-card">
+        <div class="exp-logo">
+          <img src="images/exp/member-argonne-1.jpg" alt="Argonne National Lab">
+        </div>
+        <div class="exp-info">
+          <h3>Givens Research Associate — Argonne National Lab</h3>
+          <div class="exp-sub">May 2025 – July 2025</div>
+          <ul>
+            <li>Selected as <strong>one of thirteen</strong> Givens Research Associates at ANL.</li>
+            <li>Designed a post-training multi-agent LLM framework to improve reasoning and coding for scientific tasks.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Education ── -->
+  <section id="education">
+    <h2 class="section-title">Education</h2>
+    <div class="exp-list">
+      <div class="exp-card">
+        <div class="exp-logo"><img src="images/education/purdue.png" alt="Purdue University"></div>
+        <div class="exp-info">
+          <h3>Purdue University, West Lafayette, Indiana</h3>
+          <div class="exp-sub">Ph.D., Electrical and Computer Engineering &nbsp;·&nbsp; Jan 2022 – Present</div>
+        </div>
+      </div>
+      <hr class="exp-divider">
+      <div class="exp-card">
+        <div class="exp-logo"><img src="images/education/wisconsin.jpeg" alt="UW–Madison"></div>
+        <div class="exp-info">
+          <h3>University of Wisconsin–Madison</h3>
+          <div class="exp-sub">M.S., Electrical Engineering &nbsp;·&nbsp; Aug 2019 – May 2021</div>
+        </div>
+      </div>
+      <hr class="exp-divider">
+      <div class="exp-card">
+        <div class="exp-logo"><img src="images/education/psg_tech.png" alt="PSG College of Technology"></div>
+        <div class="exp-info">
+          <h3>PSG College of Technology, Coimbatore, India</h3>
+          <div class="exp-sub">B.E., Electronics and Communication Engineering &nbsp;·&nbsp; Jul 2014 – May 2018</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <p>
+      Check out my <a href="https://www.instagram.com/atelierofsid/" target="_blank">artworks</a>! &nbsp;·&nbsp;
+    </p>
+  </footer>
+
+</div><!-- /page-wrap -->
+
+<script>
+  function toggleTheme() {
+    const cur = document.documentElement.getAttribute('data-theme');
+    const next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    document.getElementById('theme-btn').textContent = next === 'dark' ? '☀' : '☾';
+  }
+  (function () {
+    const saved = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', saved);
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('theme-btn').textContent = saved === 'dark' ? '☀' : '☾';
+    });
+  })();
+</script>
