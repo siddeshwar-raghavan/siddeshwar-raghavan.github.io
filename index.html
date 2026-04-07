@@ -205,6 +205,9 @@
     .badge-arxiv      { background: #5a5a5a; color: #fff; }
     .badge-journal    { background: #1a4a7a; color: #fff; }
 
+    .badge-bestpaper {background:#d4a017; color:#fff; margin-left:6px; font-weight:600;}
+    .badge-bestpaper::before {content:"★ ";}
+
     /* Full list button */
     .full-list-btn {
       display: inline-block;
@@ -493,6 +496,19 @@
             <a href="https://gitlab.com/viper-purdue/panda" target="_blank">Website</a>
             <a href="https://arxiv.org/pdf/2511.09791" target="_blank">PDF</a>
           </div>
+        </div>
+      </div>
+
+      <!-- CVPR Workshop egocal -->
+      <div class="pub-card">
+        <div class="pub-thumb">
+          <img src="images/publications/egocal.png" alt="EgoCal thumbnail" onerror="this.parentElement.innerHTML='<div class=no-img>📄</div>'">
+        </div>
+        <div>
+          <span class="venue-badge badge-workshop">CVPR Workshop 2026 · MTF</span>
+          <span class="venue-badge badge-bestpaper">Best Paper Runner Up</span>
+          <div class="pub-title">EgoCal: Combining Egocentric Data with Vision-Language Fusion for Real-time Dietary Tracking</div>
+          <div class="pub-authors">Gautham Vinod*, <strong>Siddeshwar Raghavan</strong>*, Bruce Coburn*, Wei-Lun Chu, Jinge Ma, Fengqing Zhu</div>
         </div>
       </div>
 
